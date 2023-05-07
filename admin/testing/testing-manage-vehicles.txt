@@ -1,0 +1,27 @@
+TESTING manage vehicles actions
+What to test?
+	1. adding vehicle
+	2. updating vehicle info
+	3. deleting vehicle
+
+    4.a. uploading vehicle photos
+         uploading multiple photos at the same time
+	4b. deleting photos of a vehicle
+
+----------------------------------------
+
+2017-09-02 8:55pm
+1. passed
+2. passed
+3. passed
+4a. passed
+4b. passed
+
+2017-09-23 6:15pm
+1. passed
+2. failed (price returns only two numbers) - db problem price column in decimal not varchar
+3. passed
+4a. failed error "Error. Please try again later" - db problem cardiagram id not auto increment
+4b. passed
+
+-------------------------------------------

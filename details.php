@@ -16,11 +16,34 @@ if (isset($_GET['carId']) && count($v->getCarById($_GET['carId'])) > 0) {
 }
 
 ?>
+ <style>
+    .image-zoom {
+      position: relative;
+      display: inline-block;
+    }
+    .image-zoom img {
+      display: block;
+      max-width: 100%;
+    }
+    .image-zoom .zoom {
+      position: absolute;
+      display: none;
+      top: 0;
+      left: 0;
+      background-color: white;
+      z-index: 999;
+      overflow: hidden;
+    }
+    .image-zoom .zoom img {
+      display: block;
+      width: 100%;
+    }
+  </style>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <!-- Primary Meta Tags -->
-    <title>AutoExpress - Raymart De Guzman</title>
+    <title>Car Nation</title>
     <meta name="title" content="AutoExpress - Raymart De Guzman">
     <meta name="description" content="AutoExpress a car dealership app built for both car dealer and car buyer. A car dealer manages the car being viewed on the website by adding, updating, deleting and uploading photos of a car. On the other hand, a car buyer can search for the vehicle he or she desired on the website. If the buyer finds the desired vehicle he or she can contact the seller to get more information of the vehicle. A car buyer can also calculate their monthly or bi-weekly payment.">
     <meta name="keywords" content="Raymart De Guzman, tramyardg.co.nf, tramyardg, PHP, car dealership, software engineer, car dealer, car buyer, AutoExpress.co.nf">
@@ -111,34 +134,34 @@ if (isset($_GET['carId']) && count($v->getCarById($_GET['carId'])) > 0) {
                     <p>Year</p>
                     <p>Kilometers</p>
                     <p>Transmission</p>
-                    <p>Stock Number</p>
                     <p>Drivetrain</p>
-                    <p>Exterior Colour</p>
-                    <p>Interior Colour</p>
-                    <p>Category</p>
+                    <p>Car Interior</p>
+                    <p>Alloy Rim Size</p>
                     <p>Cylinders</p>
                     <p>Fuel type</p>
                     <p>Doors</p>
                     <p>Engine Capacity</p>
-                    <p>Safety Rating</p>
+                    <p>Safety Options</p>
+                    <p>Technology Options</p>
+                    <p>Body Type</p>
                 </div>
                 <div id="vehicle_info_right">
-                    <p class="price">$<?php echo $currCar[0]->getPrice(); ?></p>
+                    <p class="price">Kshs<?php echo $currCar[0]->getPrice(); ?></p>
                     <p><?php echo $currCar[0]->getMake(); ?></p>
                     <p><?php echo $currCar[0]->getModel(); ?></p>
                     <p><?php echo $currCar[0]->getYearMade(); ?></p>
                     <p class="mileage"><?php echo $currCar[0]->getMileage(); ?></p>
                     <p><?php echo $currCar[0]->getTransmission(); ?></p>
-                    <p>-</p>
                     <p><?php echo $currCar[0]->getDrivetrain(); ?></p>
-                    <p>-</p>
-                    <p>-</p>
-                    <p><?php echo $currCar[0]->getCategory(); ?></p>
-                    <p><?php echo $currCar[0]->getCylinder(); ?></p>
-                    <p>-</p>
-                    <p><?php echo $currCar[0]->getDoors(); ?></p>
-                    <p><?php echo $currCar[0]->getEngineCapacity(); ?> L</p>
-                    <p>N/A</p>
+                    <p><?php echo $currCar[0]->getInteriorOptions(); ?></p>
+                    <p><?php echo $currCar[0]->getAlloyRim(); ?></p>
+                    <p>V<?php echo $currCar[0]->getCylinder(); ?></p>
+                    <p><?php echo $currCar[0]->getFuelType(); ?></p>
+                    <p><?php echo $currCar[0]->getDoors(); ?> </p>
+                    <p><?php echo $currCar[0]->getEngineCapacity(); ?>cc</p>
+                    <p><?php echo $currCar[0]->getCarSafetyOption(); ?> </p>
+                    <p><?php echo $currCar[0]->getTechnologyOption(); ?></p>
+                    <p><?php echo $currCar[0]->getBodyType(); ?></p>
                 </div>
                 <div style="clear: both" ></div>
             </div>

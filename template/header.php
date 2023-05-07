@@ -1,5 +1,5 @@
 <div class="header">
-    <div><img src="image/icon.svg" class="car-logo" alt="Site logo"/></div>
+    <div><img src="image/logo/Asset1.png" class="car-logo" alt="Site logo"/></div>
     <div class="clear-both"></div>
     <div class="menu-header">
         <div id="menu-header-left-section">

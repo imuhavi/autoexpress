@@ -22,6 +22,12 @@ class Vehicle implements JsonSerializable
     private $_doors;
     private $_status;
     private $_dateAdded;
+    private $_fuel_type;
+    private $_body_type;
+    private $_alloy_rim;
+    private $_safetyOption ;
+    private $_technologyOption;
+    private $_interiorOptions;
 
 
     /**
@@ -42,7 +48,8 @@ class Vehicle implements JsonSerializable
      * @param $_status
      * @param $_dateAdded
      */
-    public function __construct($_vehicleId, $_make, $_yearMade, $_model, $_price, $_mileage, $_transmission, $_drivetrain, $_engineCapacity, $_category, $_cylinder, $_doors, $_status, $_dateAdded)
+    public function __construct($_vehicleId, $_make, $_yearMade, $_model, $_price, $_mileage, $_transmission, $_drivetrain, $_engineCapacity, $_category, $_cylinder,
+     $_doors, $_status, $_dateAdded, $_fuel_type, $_body_type, $_alloy_rim, $_safetyOption, $_technologyOption, $_interiorOptions)
     {
         $this->_vehicleId = $_vehicleId;
         $this->_make = $_make;
@@ -57,9 +64,51 @@ class Vehicle implements JsonSerializable
         $this->_cylinder = $_cylinder;
         $this->_doors = $_doors;
         $this->_status = $_status;
+        $this->_fuel_type = $_fuel_type;
+        $this->_body_type = $_body_type;
+        $this->_alloy_rim = $_alloy_rim;
+        $this->_safetyOption = $_safetyOption;
+        $this->_technologyOption = $_technologyOption;
+        $this->_interiorOptions = $_interiorOptions;        
         $this->_dateAdded = $_dateAdded;
     }
 
+    public function getFuelType(){
+        return $this->_fuel_type;
+    }
+    public function setFuelType($fuel_type){
+        $this->_fuel_type = $fuel_type;
+    }
+    public function getBodyType(){
+        return $this->_body_type;
+    }
+    public function setBodyType($body_type){
+        $this->_body_type = $body_type;
+    }
+    public function getAlloyRim(){
+        return $this->_alloy_rim;
+    }
+    public function setAlloyRim($alloy_rim){
+        $this->_alloy_rim = $alloy_rim;
+    }
+    public function getCarSafetyOption(){
+        return $this->_safetyOption;
+    }
+    public function setCarSafetyOption($safetyOption){
+        $this->_safetyOption = $safetyOption;
+    }
+    public function getTechnologyOption(){
+        return $this->_technologyOption;
+    }
+    public function setTechnologyOption($technologyOption){
+        $this->_technologyOption = $technologyOption;
+    }
+    public function getInteriorOptions(){
+        return $this->_interiorOptions;
+    }
+    public function setInteriorOptions($interiorOptions){
+        $this->_interiorOptions = $interiorOptions;
+    }
     /**
      * @return mixed
      */

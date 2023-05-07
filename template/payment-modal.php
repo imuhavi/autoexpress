@@ -81,7 +81,7 @@
                             <tr>
                                 <td>Bi-Weekly</td>
                                 <td>&nbsp;</td>
-                                <td>$</td>
+                                <td>Kshs</td>
                                 <td>&nbsp;<span class="modal-bi-weekly"></span></td>
                                 <td></td>
                             </tr>

@@ -40,6 +40,12 @@ class CarDAO extends Utility
                 $row["cylinder"],
                 $row["doors"],
                 $row["status"],
+                $row["fuel_type"],
+                $row["body_type"],
+                $row["alloy_rim"],
+                $row["safetyOption"],
+                $row["technologyOption"],
+                $row["interiorOptions"],
                 $row["dateAdded"]
             );
         }
@@ -133,6 +139,8 @@ class CarDAO extends Utility
     }
 
     function create(&$valueObject) {
+        // echo $valueObject->getCarSafetyOption();
+        // die();
         $sql =    '   INSERT  '.
             '   INTO  '.
             '     `vehicle`(  '.
@@ -145,10 +153,14 @@ class CarDAO extends Utility
             '       `transmission`,  '.
             '       `drivetrain`,  '.
             '       `engineCapacity`,  '.
-            '       `category`,  '.
             '       `cylinder`,  '.
             '       `doors`,  '.
             '       `status`,  '.
+            '       `body_type`,  '.
+            '       `alloy_rim`,  '.
+            '       `safetyOption`,  '.
+            '       `technologyOption`,  '.
+            '       `interiorOptions`,  '.
             '       `dateAdded`  '.
             '     )  '.
             '   VALUES(  '.
@@ -161,10 +173,14 @@ class CarDAO extends Utility
             '     '.$valueObject->getTransmission().',  '.
             '     '.$valueObject->getDrivetrain().',  '.
             '     '.$valueObject->getEngineCapacity().',  '.
-            '     '.$valueObject->getCategory().',  '.
             '     '.$valueObject->getCylinder().',  '.
             '     '.$valueObject->getDoors().',  '.
             '     '.$valueObject->getStatus().',  '.
+            '     '.$valueObject->getBodyType().',  '.
+            '     '.$valueObject->getAlloyRim().',  '.
+            '     '.$valueObject->getCarSafetyOption().',  '.
+            '     '.$valueObject->getTechnologyOption().',  '.
+            '     '.$valueObject->getInteriorOptions().',  '.
             '     '.$valueObject->getDateAdded().'  '.
             '  );  ';
         // echo $sql;
@@ -191,6 +207,12 @@ class CarDAO extends Utility
             $postArray["cylinder"],
             $postArray["doors"],
             $this->stringValue($postArray["status"]),
+            $this->stringValue($postArray["fuel_type"]),
+            $this->stringValue($postArray["body_type"]),
+            $this->stringValue($postArray["alloy_rim"]),
+            $this->stringValue($postArray["safetyOption"]),
+            $this->stringValue($postArray["technologyOption"]),
+            $this->stringValue($postArray["interiorOptions"]),
             $this->stringValue($this->getTimeStamp())
         );
         if($this->create($car)) {

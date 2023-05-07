@@ -15,6 +15,14 @@ class AddOrUpdateTemplate {
       this.transmission = options.transmission;
       this.engineCapacity = options.engineCapacity;
       this.doors = options.doors;
+      this.safetyOption = options.safetyOption;
+      this.fuel_type = options.fuel_type;
+      this.body_type = options.body_type;
+      this.alloy_rim = options.alloy_rim;
+      this.technologyOption = options.technologyOption;
+      this.interiorOptions = options.interiorOptions;
+
+
     }
   }
 
@@ -39,6 +47,7 @@ class AddOrUpdateTemplate {
                 ${this.isForUpdate ? this.addOrUpdateCar_InputMake() : this.addOrUpdateCar_SelectMake()}
                 ${this.isForUpdate ? this.addOrUpdateCar_InputModel() : this.addOrUpdateCar_SelectModel()}
                 ${this.addOrUpdateCar_SelectYear()}
+                ${this.addOrUpdateCar_SelectFuel()}
                 ${this.addOrUpdateCar_Price()}
                 ${this.addOrUpdateCar_Mileage()}
                 ${this.addOrUpdateCar_Transmission()}
@@ -49,7 +58,21 @@ class AddOrUpdateTemplate {
               <span class="input-required">*</span> <span class="label label-danger">Required fields</span>
             </div>
         </div>
-        ${this.addOrUpdateCar_CategoryPanel()}
+        <div class="panel panel-default">   
+          <div class="panel-heading"><h4>Car Specifications</h4></div>   
+            <div class="panel-body">   
+              <table cellspacing="1" id="update-car-general-info-table">   
+                <tbody>
+                ${this.addOrUpdateCar_CarBody()}
+                ${this.addOrUpdateCar_CarWheels()}
+                ${this.addOrUpdateCar_CarSafety()}
+                ${this.addOrUpdateCar_CarTechnology()}
+                ${this.addOrUpdateCar_CarInterior()}
+                </tbody>
+              </table>
+              <span class="input-required">*</span> <span class="label label-danger">Required fields</span>
+            </div>
+        </div>
         ${this.addOrUpdateCar_EngineChassis()}
         ${this.addOrUpdateCar_SubmitButton()}
       </form>`;
@@ -176,7 +199,20 @@ class AddOrUpdateTemplate {
             <b style="font-size: 10px; color: red;" id="year-err">&nbsp;</b>   
         </td></tr>`;
   }
-
+  addOrUpdateCar_SelectFuel() {
+    return `<tr>
+        <td>Fuel Type<span class="input-required"> *</span></td>   
+        <td>   
+            <select name="fuel_type" id="fuel_type" title="fuel_type" required >   
+                <option selected="selected" value="">Select fuel type</option> 
+                <option value="gasoline">Gasoline</option>
+                <option value="diesel">Diesel</option>
+                <option value="electric">Electric</option>
+                <option value="hybrid">Hybrid</option>
+            </select>   
+            <b style="font-size: 10px; color: red;" id="year-err">&nbsp;</b>   
+        </td></tr>`;
+  }
   addOrUpdateCar_InputModel() {
     return `<tr>
                 <td>Model<span class="input-required"> *</span></td>
@@ -201,7 +237,7 @@ class AddOrUpdateTemplate {
     <tr>
         <td>Price<span class="input-required"> *</span></td>
         <td>
-         <input type="number" name="price" id="price" title="price" min="0" max="999999" required value="${this.isForUpdate ? this.price : ''}" />
+         <input type="number" name="price" id="price" title="price" min="0" max="999999999" required value="${this.isForUpdate ? this.price : ''}" />
          <b style="font-size: 10px; color: red;" id="price-err">&nbsp;</b>
         </td>
     </tr>`;
@@ -223,6 +259,11 @@ class AddOrUpdateTemplate {
               <td>
                 <input type="radio" name="transmission" id="transmission" value="Automatic" title="transmission" required>&nbsp;Automatic   
                 <input type="radio" name="transmission" id="transmission" value="Manual" title="transmission" required>&nbsp;Manual   
+                <input type="radio" name="transmission" id="transmission" value="Continuously Variable Transmission (CVT)" title="transmission" required>&nbsp;CVT   
+                <input type="radio" name="transmission" id="transmission" value="Dual-Clutch Transmission (DCT)" title="transmission" required>&nbsp;Dual Clutch Transmission   
+                <input type="radio" name="transmission" id="transmission" value="Sequential Manual Transmission (SMT)" title="transmission" required>&nbsp;Sequential Manual Transmission   
+                <input type="radio" name="transmission" id="transmission" value="Automated Manual Transmission (AMT)" title="transmission" required>&nbsp;Automated Manual Transmission  
+                <input type="radio" name="transmission" id="transmission" value="Hybrid Transmission" title="transmission" required>&nbsp;Hybrid Transmission   
                 <b style="font-size: 10px; color: red;" id="transmission-err">&nbsp;</b>   
               </td>   
             </tr>`;
@@ -235,7 +276,7 @@ class AddOrUpdateTemplate {
                 <input type="radio" name="drivetrain" id="drivetrain" value="AWD" title="drivetrain" required> AWD   
                 <input type="radio" name="drivetrain" id="drivetrain" value="FWD" title="drivetrain" required> FWD   
                 <input type="radio" name="drivetrain" id="drivetrain" value="RWD" title="drivetrain" required> RWD   
-                <input type="radio" name="drivetrain" id="drivetrain" value="4X4" title="drivetrain" required> 4X4   
+                <input type="radio" name="drivetrain" id="drivetrain" value="4WD" title="drivetrain" required> 4WD   
                 <b style="font-size: 10px; color: red;" id="drivetrain-err">&nbsp;</b>   
               </td>   
             </tr>`;
@@ -247,41 +288,124 @@ class AddOrUpdateTemplate {
               <td>
                 <input type="radio" name="status" id="status" value="Available" title="status" checked> Available
                 <input type="radio" name="status" id="status" value="SOLD" title="status"> Sold
+                <input type="radio" name="status" id="status" value="SOLD" title="status"> In shipment
+                <input type="radio" name="status" id="status" value="SOLD" title="status"> New Arrivals
               </td>
             </tr>`;
   }
 
-  addOrUpdateCar_CategoryPanel() {
+  addOrUpdateCar_CarBody() {
     return `
-    <div class="panel panel-default">
-       <div class="panel-heading"><h4>Category</h4></div>
-       <div class="panel-body">
-        <div class="row">
-         <div class="col-md-5">
-          <b>Car</b><br/>
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Subcompact car"> Subcompact car <br/>
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Compact car"> Compact car <br /> 
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Mid-size car"> Mid-size car <br />
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Entry-level luxury car"> Entry-level luxury car <br />
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Mid-size luxury car"> Mid-size luxury car <br />
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Full-size car"> Full-size car
-         </div>
-         <div class="col-md-5">   
-          <b>Truck</b><br/>
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Minivan"> Minivan<br />
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Van"> Van<br />
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Compact SUV"> Compact SUV<br /> 
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Mid-size SUV"> Mid-size SUV<br /> 
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Full-size SUV"> Full-size SUV<br />
-          <input required class="right_side" type="radio" name="category" id="category" title="category" value="Pickup"> Pickup
-         </div>
-         <div class="col-md-2"></div>
-        </div>
-        <span class="input-required">*</span> <span class="label label-danger">Required fields</span>
-       </div>
-    </div>`;
+        <tr>
+        <td>Body Type<span class="input-required"> *</span></td>   
+        <td>   
+            <select name="body_type" id="body_type" title="body_type" required >   
+                <option selected="selected" value="">Select body type</option> 
+                <option value="sedan">Sedan</option>
+                <option value="hatchback">Hatchback</option>
+                <option value="SUV">SUV</option>
+                <option value="crossover">Crossover</option>
+                <option value="coupe">Coupe</option>
+                <option value="convertible">Convertible</option>
+                <option value="pickup">Pickup Truck</option>
+                <option value="van">Van</option>
+                <option value="wagon">Station Wagon</option>
+                <option value="luxury">Luxury Car</option>
+                <option value="sports">Sports</option>
+                <option value="compact">Compact</option>
+                <option value="mid-size">Mid-Size</option>
+                <option value="full-size">Full-Size</option>
+                <option value="crossover">Crossover</option>
+                <option value="off-road">Off-Road</option>
+            </select>   
+            <b style="font-size: 10px; color: red;" id="year-err">&nbsp;</b>   
+        </td></tr>`;
   }
-
+  addOrUpdateCar_CarWheels() {
+    return `
+        <tr>
+        <td>Alloy Rim Size<span class="input-required"> *</span></td>   
+        <td>   
+            <select name="alloy_rim" id="alloy_rim" title="alloy_rim" required >   
+                <option selected="selected" value="">Select rim size</option> 
+                <option value="13">13-inch Wheels</option>
+                <option value="14">14-inch Wheels</option>
+                <option value="15">15-inch Wheels</option>
+                <option value="16">16-inch Wheels</option>
+                <option value="17">17-inch Wheels</option>
+                <option value="18">18-inch Wheels</option>
+                <option value="19">19-inch Wheels</option>
+                <option value="20">20-inch Wheels</option>
+                <option value="21">21-inch Wheels</option>
+                <option value="22">22-inch Wheels</option>
+            </select>   
+            <b style="font-size: 10px; color: red;" id="year-err">&nbsp;</b>   
+        </td></tr>`;
+  }
+  addOrUpdateCar_CarSafety() {
+    return `
+        <tr>
+        <td>Car Safety<span class="input-required"> *</span></td>   
+        <td> 
+            <div>
+              <input type="checkbox" name="safetyOption[]" value="abs"> Anti-lock Braking System (ABS)
+              <input type="checkbox" name="safetyOption[]" value="airbags"> Airbags
+              <input type="checkbox" name="safetyOption[]" value="traction-control"> Traction Control
+              <input type="checkbox" name="safetyOption[]" value="stability-control"> Stability Control
+              <input type="checkbox" name="safetyOption[]" value="blind-spot-monitoring"> Blind Spot Monitoring
+              <input type="checkbox" name="safetyOption[]" value="lane-departure-warning"> Lane Departure Warning
+              <input type="checkbox" name="safetyOption[]" value="forward-collision-warning"> Forward Collision Warning
+            </div>
+       
+            <b style="font-size: 10px; color: red;" id="year-err">&nbsp;</b>   
+        </td></tr>`;
+  }
+  addOrUpdateCar_CarTechnology() {
+    return `
+        <tr>
+        <td>Car Technology<span class="input-required"> *</span></td>   
+        <td>
+            <div>
+                <input type="checkbox" name="technologyOption[]" value="gps"> GPS Navigation
+                <input type="checkbox" name="technologyOption[]" value="air-conditioning"> Air Conditioning
+                <input type="checkbox" name="technologyOption[]" value="sun-roof"> Sun Roof
+                <input type="checkbox" name="technologyOption[]" value="heated-seats"> Heated Seats
+                <input type="checkbox" name="technologyOption[]" value="bluetooth"> Bluetooth Connectivity
+                <input type="checkbox" name="technologyOption[]" value="backup-camera"> Backup Camera
+                <input type="checkbox" name="technologyOption[]" value="blind-spot-monitoring"> Blind Spot Monitoring
+                <input type="checkbox" name="technologyOption[]" value="adaptive-cruise-control"> Adaptive Cruise Control
+                <input type="checkbox" name="technologyOption[]" value="android-auto"> Android Auto
+                <input type="checkbox" name="technologyOption[]" value="apple-carplay"> Apple CarPlay
+                <input type="checkbox" name="technologyOption[]" value="wireless-charging"> Wireless Charging
+                <input type="checkbox" name="technologyOption[]" value="keyless-entry"> Keyless Entry
+                <input type="checkbox" name="technologyOption[]" value="push-button-start"> Push Button Start
+                <input type="checkbox" name="technologyOption[]" value="parking-assist"> Parking Assist
+                <input type="checkbox" name="technologyOption[]" value="head-up-display"> Head-Up Display
+                <input type="checkbox" name="technologyOption[]" value="smartphone-integration"> Smartphone Integration
+                <input type="checkbox" name="technologyOption[]" value="voice-control""> Voice Control
+            </div>
+      
+        <b style="font-size: 10px; color: red;" id="year-err">&nbsp;</b>   
+        </td></tr>`;
+  }
+  addOrUpdateCar_CarInterior() {
+    return `
+        <tr>
+        <td>Car Interior<span class="input-required"> *</span></td>   
+        <td> 
+        <div>  
+          <select name="interiorOptions" class="form-control" id="interiorOptions">
+            <option value="leather">Leather</option>
+            <option value="cloth">Cloth</option>
+            <option value="suede">Suede</option>
+            <option value="alcantara">Alcantara</option>
+            <option value="synthetic">Synthetic</option>
+            <!-- Add more interior options as needed -->
+          </select>
+        </div>
+        <b style="font-size: 10px; color: red;" id="year-err">&nbsp;</b>   
+        </td></tr>`;
+  }
   addOrUpdateCar_EngineChassis() {
     return `
     <div class="panel panel-default">   
@@ -299,7 +423,7 @@ class AddOrUpdateTemplate {
           </td>   
          </tr>   
          <tr>   
-          <td>Capacity (Litre) <span class="input-required"> *</span></td>   
+          <td>Engine Capacity<span class="input-required"> *</span></td>   
           <td>   
            <input value="${this.isForUpdate ? this.engineCapacity : ''}" type="text" name="capacity" id="capacity" minlength="0" maxlength="4" title="capacity" required>   
            <b style="font-size: 10px; color: red;" id="capacity-err">&nbsp;</b>   

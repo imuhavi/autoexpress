@@ -1,7 +1,7 @@
-# tables
-# [x] administrator
-# [x] vehicle
-# [x] cardiagram
+-- # tables
+-- # [x] administrator
+-- # [x] vehicle
+-- # [x] cardiagram
 
 CREATE TABLE administrator
 (

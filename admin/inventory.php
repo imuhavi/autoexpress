@@ -120,7 +120,7 @@ if (!isset($_SESSION['authenticated'])) {
                                     <th>Year</th>
                                     <th>Make</th>
                                     <th>Model</th>
-                                    <th>Price ($)</th>
+                                    <th>Price (Kshs)</th>
                                     <th>Status</th>
                                     <th>Mileage (Kms)</th>
                                     <th>Transmission</th>

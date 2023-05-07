@@ -96,7 +96,14 @@ let CarActions = (function () {
               category: carObj._category,
               drivetrain: carObj._drivetrain,
               status: carObj._status,
-              transmission: carObj._transmission
+              transmission: carObj._transmission,
+              safetyOption:carObj._safetyOption,
+              fuel_type:carObj._fuel_type,
+              body_type:carObj._body_type,
+              alloy_rim:carObj._alloy_rim,
+              technologyOption: carObj._technologyOption,
+              interiorOptions: carObj._interiorOptions
+
             };
             let adminUpdateCar = new AdminPageTemplate(options);
             modalContent.empty();

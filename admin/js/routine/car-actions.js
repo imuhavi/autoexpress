@@ -71,6 +71,23 @@ let CarActions = (function () {
           });
         });
       });
+      const safetyOptions = [];
+      const technologyOptions = [];
+
+      const safetyCheckboxes = document.getElementsByName("safetyOption[]");
+      const technologyCheckboxes = document.getElementsByName("technologyOption[]");
+
+      for (let i = 0; i < safetyCheckboxes.length; i++) {
+        if (safetyCheckboxes[i].checked) {
+          safetyOptions.push(safetyCheckboxes[i].value);
+        }
+      }
+
+      for (let i = 0; i < technologyCheckboxes.length; i++) {
+        if (technologyCheckboxes[i].checked) {
+          technologyOptions.push(technologyCheckboxes[i].value);
+        }
+      }
 
       // load data of this car to be updated
       updateCarLink.click(function (event) {

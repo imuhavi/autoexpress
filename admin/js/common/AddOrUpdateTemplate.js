@@ -288,8 +288,8 @@ class AddOrUpdateTemplate {
               <td>
                 <input type="radio" name="status" id="status" value="Available" title="status" checked> Available
                 <input type="radio" name="status" id="status" value="SOLD" title="status"> Sold
-                <input type="radio" name="status" id="status" value="SOLD" title="status"> In shipment
-                <input type="radio" name="status" id="status" value="SOLD" title="status"> New Arrivals
+                <input type="radio" name="status" id="status" value="IN shipment" title="status"> In shipment
+                <input type="radio" name="status" id="status" value="New Arrivals" title="status"> New Arrivals
               </td>
             </tr>`;
   }
